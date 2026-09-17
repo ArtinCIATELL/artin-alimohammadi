@@ -165,8 +165,8 @@ const AdminApp = (function() {
 
         if (!savedHash) {
             // First-time setup on this browser — require a real password.
-            if (password.length < 8) {
-                showToast('برای اولین بار یک رمز حداقل ۸ کاراکتری انتخاب کنید', 'error');
+            if (password.length < 5) {
+                showToast('رمز عبور باید حداقل ۵ کاراکتر باشد', 'error');
                 return;
             }
             localStorage.setItem(PW_KEY, await hashPassword(password));
@@ -502,8 +502,8 @@ const AdminApp = (function() {
             return;
         }
 
-        if (newPassword.length < 8) {
-            showToast('رمز عبور جدید باید حداقل ۸ کاراکتر باشد', 'error');
+        if (newPassword.length < 5) {
+            showToast('رمز عبور جدید باید حداقل ۵ کاراکتر باشد', 'error');
             return;
         }
 
