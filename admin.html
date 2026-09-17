@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل ادمین - Artin.dev</title>
+    <link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>ورود به پنل ادمین</h1>
+                <p>لطفاً رمز عبور خود را وارد کنید</p>
+            </div>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <input type="password" id="password" required placeholder="رمز عبور">
+                    <label for="password">رمز عبور</label>
+                </div>
+                <button type="submit" class="btn primary-btn">ورود</button>
+            </form>
+            <div id="login-error" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="dashboard hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>پنل ادمین</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-view="overview">خلاصه</a></li>
+                    <li><a href="#" class="nav-link" data-view="messages">پیام‌ها</a></li>
+                    <li><a href="#" class="nav-link" data-view="skills">مهارت‌ها</a></li>
+                    <li><a href="#" class="nav-link" data-view="settings">تنظیمات</a></li>
+                    <li><a href="#" class="nav-link" id="logout-btn">خروج</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview View -->
+            <div id="overview-view" class="view active">
+                <div class="view-header">
+                    <h1>خلاصه فعالیت‌ها</h1>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👁️</div>
+                        <div class="stat-info">
+                            <h3>بازدیدها</h3>
+                            <p id="visit-count">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✉️</div>
+                        <div class="stat-info">
+                            <h3>پیام‌ها</h3>
+                            <p id="message-count">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3>پیام‌های خوانده شده</h3>
+                            <p id="read-message-count">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-info">
+                            <h3>آخرین بازدید</h3>
+                            <p id="last-visit">--:--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages View -->
+            <div id="messages-view" class="view hidden">
+                <div class="view-header">
+                    <h1>پیام‌های دریافتی</h1>
+                </div>
+                <div class="messages-list" id="messages-container">
+                    <!-- Messages will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Skills View -->
+            <div id="skills-view" class="view hidden">
+                <div class="view-header">
+                    <h1>مدیریت مهارت‌ها</h1>
+                    <button id="add-skill-btn" class="btn secondary-btn">افزودن مهارت</button>
+                </div>
+                <div class="skills-list" id="admin-skills-container">
+                    <!-- Skills will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="settings-view" class="view hidden">
+                <div class="view-header">
+                    <h1>تنظیمات</h1>
+                </div>
+                <div class="settings-section">
+                    <h2>تغییر رمز عبور</h2>
+                    <form id="change-password-form">
+                        <div class="form-group">
+                            <input type="password" id="current-password" required placeholder=" ">
+                            <label for="current-password">رمز عبور فعلی</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="new-password" required placeholder=" ">
+                            <label for="new-password">رمز عبور جدید</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="confirm-password" required placeholder=" ">
+                            <label for="confirm-password">تأیید رمز عبور جدید</label>
+                        </div>
+                        <button type="submit" class="btn primary-btn">تغییر رمز عبور</button>
+                    </form>
+                </div>
+                <div class="settings-section">
+                    <h2>تنظیمات ظاهری</h2>
+                    <div class="setting-item">
+                        <label for="dark-mode-toggle">حالت تیره</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="dark-mode-toggle" checked>
+                            <label for="dark-mode-toggle" class="toggle-slider"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="admin-toast" class="toast">
+        <span id="admin-toast-message"></span>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

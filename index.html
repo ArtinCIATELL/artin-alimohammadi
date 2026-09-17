@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="آرتین علی محمدی داورانی - قهرمان مسابقات بین‌المللی روباتیک و توسعه‌دهنده">
+    <meta name="theme-color" content="#FBF6EC">
+    <link rel="canonical" href="https://artinalimohammadi.ir/">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Artin Ali Mohammadi Davarani">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:url" content="https://artinalimohammadi.ir/">
+    <meta property="og:title" content="آرتین علی محمدی داورانی | پورتفولیو">
+    <meta property="og:description" content="آرتین علی محمدی داورانی - قهرمان مسابقات بین‌المللی روباتیک و توسعه‌دهنده">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"آرتین علی محمدی داورانی","alternateName":["Artin Ali Mohammadi Davarani","Artin Alimohammadi"],"url":"https://artinalimohammadi.ir/","email":"artin.davarani@gmail.com","jobTitle":"Robotics Competitor & Developer"}</script>
+    <title>Artin Ali Mohammadi Davarani | پورتفولیو</title>
+    <!-- Apply saved theme BEFORE CSS loads (no light→dark flash) -->
+    <script>
+        try { document.documentElement.dataset.theme = localStorage.getItem('theme') || 'light'; } catch (e) {}
+    </script>
+    <link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+
+    <!-- Three.js (LOCAL — no external CDN, works without VPN) -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "./vendor/three.module.js"
+        }
+    }
+    </script>
+
+    <!-- Independent failsafe: dismiss the loader even if the main module fails to load -->
+    <script>
+        (function () {
+            function dismiss() {
+                var l = document.getElementById('loader');
+                if (l) l.classList.add('hidden');
+            }
+            window.addEventListener('load', dismiss);
+            setTimeout(dismiss, 6000);
+        })();
+    </script>
+
+    <!-- اگر فایل مستقیم (file://) باز شود، ماژول‌های ES و فونت‌ها را مرورگر بلاک می‌کند.
+         به‌جای صفحه‌ی خراب، راهنمای اجرای درست نمایش داده می‌شود. -->
+    <script>
+        (function () {
+            if (location.protocol !== 'file:') return;
+            document.addEventListener('DOMContentLoaded', function () {
+                var box = document.createElement('div');
+                box.setAttribute('dir', 'rtl');
+                box.style.cssText = 'position:fixed;inset:0;z-index:99999;display:flex;' +
+                    'align-items:center;justify-content:center;padding:24px;' +
+                    'background:#FBF6EC;color:#0F1820;font-family:Tahoma,sans-serif;text-align:center';
+                box.innerHTML =
+                    '<div style="max-width:520px;line-height:2.1">' +
+                    '<div style="font-size:52px;margin-bottom:8px">🤖</div>' +
+                    '<h2 style="margin-bottom:12px;font-size:22px">سایت را با فایل اجرا (START) باز کنید</h2>' +
+                    '<p style="font-size:15px;margin-bottom:18px">مرورگرها به‌دلایل امنیتی اجازه نمی‌دهند این سایت با ' +
+                    'دابل‌کلیک روی <code>index.html</code> کامل اجرا شود (فونت‌ها و مدل سه‌بعدی بارگذاری نمی‌شوند).</p>' +
+                    '<div style="background:#fff;border:1px solid #d9d2c4;border-radius:14px;padding:16px 18px;font-size:15px">' +
+                    '<b>ویندوز:</b> روی فایل <code>START.bat</code> دابل‌کلیک کنید.<br>' +
+                    '<b>مک / لینوکس:</b> در ترمینال <code>bash start-mac-linux.sh</code> را اجرا کنید.' +
+                    '</div>' +
+                    '<p style="font-size:13px;opacity:.7;margin-top:16px">این پیام فقط در حالت باز کردن مستقیم فایل نمایش داده می‌شود.</p>' +
+                    '</div>';
+                document.body.appendChild(box);
+            });
+        })();
+    </script>
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <div class="loader-ring loader-ring-2"></div>
+            <div class="loader-ring loader-ring-3"></div>
+            <span class="loader-text">A.D</span>
+        </div>
+    </div>
+
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" class="scroll-progress"></div>
+
+    <!-- Aurora gradient mesh (page-wide ambient) -->
+    <div class="aurora" aria-hidden="true">
+        <span class="aurora-blob aurora-blob-1"></span>
+        <span class="aurora-blob aurora-blob-2"></span>
+        <span class="aurora-blob aurora-blob-3"></span>
+    </div>
+
+    <!-- Cursor glow effect -->
+    <div id="cursor-glow" class="cursor-glow"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo">
+                <span class="logo-mark">A.D</span>
+                <span class="logo-text">ARTIN&nbsp;DAVARANI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" data-i18n="home">خانه</a></li>
+                <li><a href="#about" data-i18n="about">درباره من</a></li>
+                <li><a href="#skills" data-i18n="skills">مهارت‌ها</a></li>
+                <li><a href="#experience" data-i18n="experience">تجربیات</a></li>
+                <li><a href="#achievements" data-i18n="achievements">دستاوردها</a></li>
+                <li><a href="#contact" data-i18n="contact">تماس</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button id="theme-toggle" class="icon-btn" aria-label="تغییر تم">
+                    <span class="sun-icon">☀</span>
+                    <span class="moon-icon">☾</span>
+                </button>
+                <button id="lang-toggle" class="icon-btn lang-btn" aria-label="تغییر زبان">EN</button>
+                <button id="admin-btn" class="icon-btn" aria-label="پنل ادمین">⚙</button>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-grid"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="hero-eyebrow" data-i18n="heroEyebrow">قهرمان بین‌المللی روباتیک</span>
+                <h1 class="hero-title">
+                    <span class="hero-title-line" data-i18n="heroTitleLine1">آرتین علی محمدی</span>
+                    <span class="hero-title-line gradient-text" data-i18n="heroTitleLine2">داورانی</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">طراح و توسعه‌دهنده‌ی سامانه‌های هوشمند خانگی و روبات‌های مسابقه‌ای — برنده‌ی مدال‌های بین‌المللی در FIRA و Z-Tech.</p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="3">0</span>
+                        <span class="stat-label" data-i18n="medals">مدال قهرمانی</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="3">0</span>
+                        <span class="stat-label" data-i18n="competitions">مسابقه بین‌المللی</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5">0</span>
+                        <span class="stat-label" data-i18n="yearsExperience">سال تجربه</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#achievements" class="btn primary-btn magnetic" data-i18n="viewAchievements">مشاهده دستاوردها</a>
+                    <a href="#contact" class="btn secondary-btn magnetic" data-i18n="getInTouch">تماس با من</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-stage">
+                    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+                    <div class="profile-ring"></div>
+                    <div class="profile-orb"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="scroll-dot"></span>
+            <span class="scroll-line"></span>
+        </div>
+    </section>
+
+    <!-- Marquee ticker -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span class="marquee-item">FIRA 2025</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Z-Tech Canada</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Smart Home</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Air Robotics</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">ESP32</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Arduino</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">IoT</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Embedded C/C++</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Python</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">3× International Medals</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">FIRA 2025</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Z-Tech Canada</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Smart Home</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Air Robotics</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">ESP32</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Arduino</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">IoT</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Embedded C/C++</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Python</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">3× International Medals</span><span class="marquee-dot">✦</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-i18n="aboutMe">درباره من</h2>
+            <div class="bento-grid">
+                <div class="bento-card bento-intro tilt">
+                    <span class="bento-icon">🤖</span>
+                    <p data-i18n="aboutDescription">آرتین علی محمدی داورانی هستم؛ علاقه‌مند به روباتیک، خانه‌ی هوشمند و توسعه‌ی نرم‌افزار. در طول مسیرم، در سه مسابقه‌ی بین‌المللی موفق به کسب مدال شده‌ام و در ساخت سامانه‌های Smart Home و روبات‌های مسابقه‌ای Air تخصص دارم.</p>
+                </div>
+                <div class="bento-card bento-highlight tilt">
+                    <span class="highlight-icon">🤖</span>
+                    <span data-i18n="highlight1">طراحی روبات‌های مسابقه‌ای</span>
+                </div>
+                <div class="bento-card bento-highlight tilt">
+                    <span class="highlight-icon">🏠</span>
+                    <span data-i18n="highlight2">سامانه‌های خانه هوشمند</span>
+                </div>
+                <div class="bento-card bento-highlight tilt">
+                    <span class="highlight-icon">⚡</span>
+                    <span data-i18n="highlight3">برنامه‌نویسی Embedded</span>
+                </div>
+                <div class="bento-card bento-highlight tilt">
+                    <span class="highlight-icon">🎨</span>
+                    <span data-i18n="highlight4">رابط کاربری مدرن</span>
+                </div>
+                <div class="bento-card bento-tech">
+                    <h3 class="bento-card-title" data-i18n="techStackTitle">جعبه‌ابزار من</h3>
+                    <div class="tech-stack">
+                        <div class="tech-item">Arduino</div>
+                        <div class="tech-item">ESP32</div>
+                        <div class="tech-item">Raspberry Pi</div>
+                        <div class="tech-item">C / C++</div>
+                        <div class="tech-item">Python</div>
+                        <div class="tech-item">JavaScript</div>
+                        <div class="tech-item">IoT</div>
+                        <div class="tech-item">ROS</div>
+                    </div>
+                </div>
+                <a href="#contact" class="bento-card bento-cta tilt">
+                    <span class="bento-cta-text" data-i18n="bentoCta">بیا با هم بسازیم</span>
+                    <span class="bento-cta-arrow">←</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title" data-i18n="mySkills">مهارت‌های من</h2>
+            <div class="skills-grid" id="skills-container">
+                <!-- Skills will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title" data-i18n="workExperience">تجربیات و فعالیت‌ها</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title" data-i18n="exp1Title">عضو تیم ملی روباتیک</h3>
+                        <div class="timeline-company" data-i18n="exp1Org">مسابقات FIRA</div>
+                        <div class="timeline-date">2024 — 2025</div>
+                        <p class="timeline-description" data-i18n="expDesc1">طراحی، ساخت و برنامه‌نویسی روبات‌های مسابقه‌ای در رشته‌های Smart Home و Air با تمرکز بر بهینه‌سازی الگوریتم‌های کنترلی.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title" data-i18n="exp2Title">توسعه‌دهنده سامانه هوشمند</h3>
+                        <div class="timeline-company" data-i18n="exp2Org">پروژه‌های شخصی</div>
+                        <div class="timeline-date">2022 — اکنون</div>
+                        <p class="timeline-description" data-i18n="expDesc2">طراحی سامانه‌های خانه هوشمند مبتنی بر ESP32 و Raspberry Pi با رابط کاربری وب و ادغام پروتکل‌های MQTT و Zigbee.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title" data-i18n="exp3Title">آغاز فعالیت در روباتیک</h3>
+                        <div class="timeline-company" data-i18n="exp3Org">دوره‌های آموزشی</div>
+                        <div class="timeline-date">2020 — 2022</div>
+                        <p class="timeline-description" data-i18n="expDesc3">شروع یادگیری مفاهیم پایه‌ی الکترونیک، مکانیک و برنامه‌نویسی میکروکنترلرها به همراه شرکت در مسابقات داخلی.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title" data-i18n="myAchievements">دستاوردهای من</h2>
+            <p class="section-subtitle" data-i18n="achievementsSubtitle">برترین افتخارات کسب‌شده در مسابقات بین‌المللی روباتیک</p>
+            <div class="achievements-grid">
+
+                <article class="achievement-card tilt" data-rank="1">
+                    <div class="achievement-glow"></div>
+                    <div class="achievement-image">
+                        <div class="achievement-placeholder rank-gold">
+                            <span class="medal-icon">🥇</span>
+                            <span class="achievement-year">2024</span>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-rank" data-i18n="rankFirst">مقام اول</div>
+                        <h3 class="achievement-title" data-i18n="ach1Title">رشته‌ی Smart Home</h3>
+                        <p class="achievement-description" data-i18n="ach1Desc">کسب مقام اول در رشته‌ی خانه‌ی هوشمند در مسابقات بین‌المللی Z-Tech کانادا ۲۰۲۴.</p>
+                        <div class="achievement-tags">
+                            <span class="tag">Z-Tech</span>
+                            <span class="tag">Canada</span>
+                            <span class="tag">Smart Home</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="achievement-card tilt" data-rank="1">
+                    <div class="achievement-glow"></div>
+                    <div class="achievement-image">
+                        <div class="achievement-placeholder rank-gold">
+                            <span class="medal-icon">🥇</span>
+                            <span class="achievement-year">2025</span>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-rank" data-i18n="rankFirst">مقام اول</div>
+                        <h3 class="achievement-title" data-i18n="ach2Title">رشته‌ی Smart Home</h3>
+                        <p class="achievement-description" data-i18n="ach2Desc">کسب مقام اول در رشته‌ی خانه‌ی هوشمند در مسابقات FIRA ایران ۲۰۲۵.</p>
+                        <div class="achievement-tags">
+                            <span class="tag">FIRA</span>
+                            <span class="tag">Iran</span>
+                            <span class="tag">Smart Home</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="achievement-card tilt" data-rank="2">
+                    <div class="achievement-glow"></div>
+                    <div class="achievement-image">
+                        <div class="achievement-placeholder rank-silver">
+                            <span class="medal-icon">🥈</span>
+                            <span class="achievement-year">2025</span>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-rank" data-i18n="rankSecond">مقام دوم</div>
+                        <h3 class="achievement-title" data-i18n="ach3Title">رشته‌ی Air</h3>
+                        <p class="achievement-description" data-i18n="ach3Desc">کسب مقام دوم در رشته‌ی Air در مسابقات FIRA کره‌ی جنوبی ۲۰۲۵.</p>
+                        <div class="achievement-tags">
+                            <span class="tag">FIRA</span>
+                            <span class="tag">South Korea</span>
+                            <span class="tag">Air</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-i18n="getInTouch">تماس با من</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">✉</div>
+                        <div class="contact-details">
+                            <h3 data-i18n="email">ایمیل</h3>
+                            <p><a href="mailto:artin.davarani@gmail.com">artin.davarani@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">☎</div>
+                        <div class="contact-details">
+                            <h3 data-i18n="phone">شماره تماس</h3>
+                            <p dir="ltr"><a href="tel:+989000000000">+98 900 000 0000</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3 data-i18n="location">محل سکونت</h3>
+                            <p data-i18n="city">تهران، ایران</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">●</div>
+                        <div class="contact-details">
+                            <h3 data-i18n="availability">وضعیت</h3>
+                            <p data-i18n="availableForWork">آماده همکاری</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form" novalidate>
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required placeholder=" " minlength="2" maxlength="60" autocomplete="name">
+                        <label for="name" data-i18n="nameLabel">نام و نام خانوادگی</label>
+                        <span class="form-error" data-error-for="name"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required placeholder=" " pattern="^[a-zA-Z0-9._%+\-]+@gmail\.com$" autocomplete="email" inputmode="email">
+                        <label for="email" data-i18n="emailLabel">ایمیل (الزاماً @gmail.com)</label>
+                        <span class="form-error" data-error-for="email"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" required placeholder=" " pattern="^(\+?98|0)?9\d{9}$" autocomplete="tel" inputmode="numeric" dir="ltr">
+                        <label for="phone" data-i18n="phoneLabel">شماره موبایل (مثال: 09120000000)</label>
+                        <span class="form-error" data-error-for="phone"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder=" " maxlength="80">
+                        <label for="subject" data-i18n="subjectLabel">موضوع (اختیاری)</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" required placeholder=" " minlength="10" maxlength="1000"></textarea>
+                        <label for="message" data-i18n="messageLabel">پیام شما</label>
+                        <span class="form-error" data-error-for="message"></span>
+                        <span class="form-counter" id="message-counter">0 / 1000</span>
+                    </div>
+                    <button type="submit" class="btn primary-btn magnetic" data-i18n="sendMessage">
+                        <span class="btn-label">ارسال پیام</span>
+                        <span class="btn-arrow">←</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">ARTIN&nbsp;DAVARANI</div>
+                <div class="footer-social">
+                    <a href="#" aria-label="GitHub" class="social-link">GH</a>
+                    <a href="#" aria-label="LinkedIn" class="social-link">in</a>
+                    <a href="#" aria-label="Instagram" class="social-link">IG</a>
+                    <a href="mailto:artin.davarani@gmail.com" aria-label="Email" class="social-link">@</a>
+                </div>
+                <div class="footer-copyright">
+                    <p data-i18n="copyright">© ۲۰۲۶ Artin Ali Mohammadi Davarani — تمامی حقوق محفوظ است.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" class="back-to-top" aria-label="بازگشت به بالا">↑</button>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
